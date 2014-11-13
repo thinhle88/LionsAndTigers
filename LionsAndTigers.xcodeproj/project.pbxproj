@@ -22,6 +22,8 @@
 		6DB234631A006F530044634B /* Lioness.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6DB2345B1A006F530044634B /* Lioness.jpeg */; };
 		6DB234641A006F530044634B /* MalayanTiger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6DB2345C1A006F530044634B /* MalayanTiger.jpg */; };
 		6DB234651A006F530044634B /* SiberianTiger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6DB2345D1A006F530044634B /* SiberianTiger.jpg */; };
+		6DCA7DB41A1441EA00D5AAEC /* Lion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA7DB31A1441EA00D5AAEC /* Lion.swift */; };
+		6DCA7DB61A146E0600D5AAEC /* LionCub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA7DB51A146E0600D5AAEC /* LionCub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		6DB2345B1A006F530044634B /* Lioness.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Lioness.jpeg; sourceTree = "<group>"; };
 		6DB2345C1A006F530044634B /* MalayanTiger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MalayanTiger.jpg; sourceTree = "<group>"; };
 		6DB2345D1A006F530044634B /* SiberianTiger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SiberianTiger.jpg; sourceTree = "<group>"; };
+		6DCA7DB31A1441EA00D5AAEC /* Lion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lion.swift; path = ../Lion.swift; sourceTree = "<group>"; };
+		6DCA7DB51A146E0600D5AAEC /* LionCub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LionCub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			children = (
 				6DB234331A0067CE0044634B /* AppDelegate.swift */,
 				6DB234351A0067CE0044634B /* ViewController.swift */,
+				6DCA7DB31A1441EA00D5AAEC /* Lion.swift */,
+				6DCA7DB51A146E0600D5AAEC /* LionCub.swift */,
 				6DB234531A006A1F0044634B /* Tiger.swift */,
 				6DB234371A0067CE0044634B /* Main.storyboard */,
 				6DB2343A1A0067CE0044634B /* Images.xcassets */,
@@ -258,6 +264,8 @@
 				6DB234361A0067CE0044634B /* ViewController.swift in Sources */,
 				6DB234541A006A1F0044634B /* Tiger.swift in Sources */,
 				6DB234341A0067CE0044634B /* AppDelegate.swift in Sources */,
+				6DCA7DB61A146E0600D5AAEC /* LionCub.swift in Sources */,
+				6DCA7DB41A1441EA00D5AAEC /* Lion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

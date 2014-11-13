@@ -19,9 +19,15 @@ class ViewController: UIViewController {
     // in order to store all of our Tigers, we need a container. The array will store all of our Tiger instances
     // the empty array now exists to the array "myTigers" targeting the struct
     var myTigers:[Tiger] = []
+    var lions:[Lion] = []
+    var lionCubs:[LionCub] = []
+    
     
     var currentIndex = 0
 
+    var currentAnimal = (species: "Tiger", index: 0)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -79,8 +85,49 @@ class ViewController: UIViewController {
         
         myTigers += [secondTiger, thirdTiger, fourthTiger]
         
-        myTiger.chuffANumberOfTimes(3)
-        secondTiger.chuffANumberOfTimes(2)
+        var lion = Lion()
+        lion.age = 4
+        lion.isAlphaMale = false
+        lion.image = UIImage(named: "Lion.jpg")
+        lion.name = "Mufasa"
+        lion.subspecies = "West African"
+        
+        // Another instance of the class 'Lion()'
+        
+        var lioness = Lion()
+        lioness.age = 3
+        lioness.isAlphaMale = false
+        lioness.image = UIImage(named: "Lioness.jpg")
+        lioness.name = "Sarabi"
+        lioness.subspecies = "Barbary"
+        
+        //self to access lions array is a property, so we can access it with 'self' keyword array += [instance instance]
+        lion.roar()
+        lioness.roar()
+        
+        
+        lion.changeToAlphaMale()
+        println(lion.isAlphaMale)
+            self.lions += [lion,lioness]
+        
+        var lionCub = LionCub ()
+        lionCub.age = 1
+        lionCub.name = "Simba"
+        lionCub.image = UIImage(named: "LionCub1.jpg")
+        lionCub.subspecies = "Masai"
+        lionCub.isAlphaMale = true
+        
+        lionCub.roar()
+        lionCub.rubLionCubsBelly()
+        
+        var femaleLionCub = LionCub()
+        femaleLionCub.age = 1
+        femaleLionCub.name = "Nala"
+        femaleLionCub.image = UIImage(named: "LionCub2.jpeg")
+        femaleLionCub.subspecies = "Transvaal"
+        femaleLionCub.isAlphaMale = false
+        
+        self.lionCubs += [lionCub, femaleLionCub]
         
     }
 
@@ -92,42 +139,66 @@ class ViewController: UIViewController {
 
     @IBAction func nextBarButtonItemPressed(sender: UIBarButtonItem) {
 
-        var randomIndex:Int
-        
-        do {
-            randomIndex = Int(arc4random_uniform(UInt32(myTigers.count)))
-        }  while currentIndex == randomIndex
-        
-        currentIndex = randomIndex
-        
-        let tiger = self.myTigers[randomIndex]
-        
-//        myImageView.image = tiger.image
-//        nameLabel.text = tiger.name
-//        ageLabel.text = "\(tiger.age)"
-//        breedLabel.text = tiger.breed
+        updateAnimal()
+        updateView()
+    }
+    
+    func updateAnimal () {
+        switch currentAnimal {
+        case ("Tiger", _):
+            let randomIndex = Int(arc4random_uniform(UInt32(lions.count)))
+            currentAnimal = ("Lion", randomIndex)
+        case ("Lion", _):
+            let randomIndex = Int(arc4random_uniform(UInt32(lionCubs.count)))
+            currentAnimal = ("LionCub", randomIndex)
+        default:
+            let randomIndex = Int(arc4random_uniform(UInt32(myTigers.count)))
+            currentAnimal = ("Tiger", randomIndex)
+            
+        }
+    }
+    
+    func updateView () {
         
         UIView.transitionWithView(self.view, duration: 2, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
             
+            if self.currentAnimal.species == "Tiger" {
+                let tiger = self.myTigers[self.currentAnimal.index]
+            self.myImageView.image = tiger.image
+                self.breedLabel.text = tiger.breed
+                self.ageLabel.text = "\(tiger.age)"
+                self.nameLabel.text = tiger.name
+                self.randomFactLabel.text = tiger.randomFact()
+                
+            }
+            else if self.currentAnimal.species == "Lion" {
+                let lion = self.lions[self.currentAnimal.index]
+                self.myImageView.image = lion.image
+                self.breedLabel.text = lion.subspecies
+                self.ageLabel.text = "\(lion.age)"
+                self.nameLabel.text = lion.name
+                self.randomFactLabel.text = lion.randomFact()
+            }
             
-        self.myImageView.image = tiger.image
-        self.nameLabel.text = tiger.name
-        self.ageLabel.text = "\(tiger.age)"
-        self.breedLabel.text = tiger.breed
-        self.randomFactLabel.text = tiger.randomFact()
+            else if self.currentAnimal.species  == "LionCub" {
+                let lionCub = self.lionCubs[self.currentAnimal.index]
+                self.myImageView.image = lionCub.image
+                self.breedLabel.text = lionCub.subspecies
+                self.ageLabel.text = "\(lionCub.age)"
+                self.nameLabel.text = lionCub.name
+            self.randomFactLabel.text = lionCub.randomFact()
+            }
             
-        
+            self.randomFactLabel.hidden = false
+            
             }, completion: {
                 (finished: Bool) -> () in
         })
+        }
     }
     
     
-    
-    
-    
-    
-}
+
 
 /* 
 Our array prints out 4 different tiger instances and shows 4 elements in it. However the local variable is not accessible! "myTiger" is a local variable and not a property. Properties are accessible.
